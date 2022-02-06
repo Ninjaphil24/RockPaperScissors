@@ -18,4 +18,22 @@ switch(x) {
   }
 return result;
 }
-document.querySelector("body").innerHTML = computerPlay(); 
+
+
+const playerSelection = "RoCk";
+const computerSelection = computerPlay();
+
+function playRound(playerSelection, computerSelection) {
+    // your code here!
+    if(computerSelection=="paper"&&playerSelection=="rock")return "You Lose! Paper beats Rock";
+    else if(computerSelection=="scissors"&&playerSelection=="paper")return "You Lose! Scissors beats Paper";
+    else if(computerSelection=="rock"&&playerSelection=="scissors")return "You Lose! Rock beats Scissors";
+    else if(computerSelection=="rock"&&playerSelection=="paper")return "You Win! Paper beats Rock";
+    else if(computerSelection=="paper"&&playerSelection=="scissors")return "You Win! Scissors beats Paper";
+    else if(computerSelection=="scissors"&&playerSelection=="rock")return "You Win! Rock beats Scissors";
+    else if(computerSelection==playerSelection)return "Draw!  Play again!";
+    else return "You misspelled the word!"
+}
+
+
+document.querySelector("body").innerHTML = playRound(playerSelection.toLowerCase(), computerSelection)
