@@ -1,18 +1,19 @@
 if (document.readyState == 'loading') {
-	document.addEventListener('DOMContentLoaded', ready)
+	document.addEventListener('DOMContentLoaded', playerSelect)
 } 
 // else {
-// 	ready()
+// 	playerSelect()
 //   playRound()
 // }
 
-function ready() {
+function playerSelect() {
 	var playerSelection = new URL(window.location).searchParams.get('playerSelection')
 	document.getElementById('myInput').value = playerSelection
-  return playerSelection
-	
+  return playerSelection	
 }
 
+// var playerScore = new URL(window.location).searchParams.get('playerScore')
+// documentcoreentById('playerScore').value = playerScore
 
 function computerPlay() {
 
@@ -42,23 +43,33 @@ const computerSelection = computerPlay();
 let playerScore = 0;
 let computerScore = 0;
 function playRound(playerSelection, computerSelection) {
+    let result = ""
     // your code here!
     if(computerSelection=="paper"&&playerSelection=="rock"
     ||computerSelection=="scissors"&&playerSelection=="paper"
     ||computerSelection=="rock"&&playerSelection=="scissors") {
-        computerScore+=1;
-        return "You Lose! "+ computerSelection.toUpperCase() + " beats " + playerSelection.toUpperCase();}
+      computerScore += 1
+      result = ('You lose! ' + computerSelection + ' beats ' + playerSelection
+          + "<br><br>Player score: " + playerScore + "<br>Computer score: " + computerScore)
+    }
+        
     else if(computerSelection=="rock"&&playerSelection=="paper"
     ||computerSelection=="paper"&&playerSelection=="scissors"
     ||computerSelection=="scissors"&&playerSelection=="rock") {
-        playerScore++;
-        return "You Win! " + playerSelection.toUpperCase() + " beats " + computerSelection.toUpperCase();}
+      playerScore += 1
+      result = ('You win! ' + playerSelection + ' beats ' + computerSelection
+          + "<br><br>Player score: " + playerScore + "<br>Computer score: " + computerScore)
+    }
+     
     else if(computerSelection==playerSelection)return "Draw!  Play again!";
-    else return "You misspelled the word!"
+    // else return "You misspelled the word!"
+    document.getElementById('result').innerHTML = result
+    return  
 }
 
+playRound(playerSelect(),computerPlay());
+playRound(playerSelect(),computerPlay());
+playRound(playerSelect(),computerPlay());
+playRound(playerSelect(),computerPlay());
+playRound(playerSelect(),computerPlay());
 
-
-document.getElementById("result").innerHTML = playRound(ready().toLowerCase(),computerSelection);
-document.getElementById("playerScore").innerHTML = "Your Score: " + playerScore;
-document.getElementById("computerScore").innerHTML = "Computer Score: " + computerScore;
