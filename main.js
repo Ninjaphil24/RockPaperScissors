@@ -67,9 +67,8 @@ function playRound(playerSelection, computerSelection) {
     return  
 }
 
+let x = 0;
+while(x<5) {
 playRound(playerSelect(),computerPlay());
-playRound(playerSelect(),computerPlay());
-playRound(playerSelect(),computerPlay());
-playRound(playerSelect(),computerPlay());
-playRound(playerSelect(),computerPlay());
-
+x++
+}
