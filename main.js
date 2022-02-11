@@ -1,19 +1,15 @@
-if (document.readyState == 'loading') {
-	document.addEventListener('DOMContentLoaded', playerSelect)
-} 
-// else {
-// 	playerSelect()
-//   playRound()
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach((param) => {
+
+  // and for each one we add a 'click' listener
+  param.addEventListener('click', () => {
+    playRound(param.value,computerPlay());
+  });
+});
+// function buttonValue(e) {
+//   alert(buttons.value);
 // }
-
-function playerSelect() {
-	var playerSelection = new URL(window.location).searchParams.get('playerSelection')
-	document.getElementById('myInput').value = playerSelection
-  return playerSelection	
-}
-
-// var playerScore = new URL(window.location).searchParams.get('playerScore')
-// documentcoreentById('playerScore').value = playerScore
 
 function computerPlay() {
 
@@ -67,9 +63,5 @@ function playRound(playerSelection, computerSelection) {
     return  
 }
 
-playRound(playerSelect(),computerPlay());
-playRound(playerSelect(),computerPlay());
-playRound(playerSelect(),computerPlay());
-playRound(playerSelect(),computerPlay());
-playRound(playerSelect(),computerPlay());
+// playRound(playerSelect(),computerPlay());
 
